@@ -47,10 +47,9 @@ jobs:
         xmllint --xpath 'string(/coverage/@line-rate)' coverage.xml
         COVER=$(xmllint --xpath 'string(/coverage/@line-rate)' coverage.xml)
         echo $COVER
-        if xmllint --xpath 'string(/coverage/@line-rate)' coverage.xml > 0.8:
-        then
-          echo "correct"
+        if [[ $COVER > 8.0 ]]; then
+          echo "Boa cobertura"
         else
-          echo "incorrect"
+          echo "Cobertura a ser melhorada"
         fi
 
