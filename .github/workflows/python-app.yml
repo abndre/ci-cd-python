@@ -45,6 +45,8 @@ jobs:
         coverage xml
         sed -n '2p' coverage.xml
         xmllint --xpath 'string(/coverage/@line-rate)' coverage.xml
+        COVER=$(xmllint --xpath 'string(/coverage/@line-rate)' coverage.xml)
+        echo $COVER
         if xmllint --xpath 'string(/coverage/@line-rate)' coverage.xml > 0.8:
         then
           echo "correct"
